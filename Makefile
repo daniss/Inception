@@ -1,0 +1,1 @@
+mkdir wordpress mariadb

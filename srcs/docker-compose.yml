@@ -49,6 +49,21 @@ services:
     restart: on-failure
     ports:
       - "443:443"
+  
+  redis:
+    container_name: redis
+    build: ./requirements/bonus/redis
+    depends_on:
+      - wordpress
+    ports:
+     - '6379:6379'
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - wordpress:/var/www/html
+    networks:
+      - inception
 
 volumes:
   wordpress:
@@ -56,13 +71,13 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /home/cindrak/Documents/wordpress
+      device: /home/inception/data/wordpress
   mariadb:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: /home/cindrak/Documents/mariadb
+      device: /home/inception/data/mariadb
 
 networks:
   inception:

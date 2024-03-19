@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Wait for MySQL to be ready
 sleep 10;
 if [ -d '/var/www/html' ]; then
     :
@@ -19,8 +18,6 @@ else
 
     sed -i "40i define( 'WP_REDIS_HOST', 'redis' );"      /var/www/html/wp-config.php
     sed -i "41i define( 'WP_REDIS_PORT', 6379 );"               /var/www/html/wp-config.php
-    sed -i "42i define( 'WP_REDIS_TIMEOUT', 1 );"               /var/www/html/wp-config.php
-    sed -i "43i define( 'WP_REDIS_READ_TIMEOUT', 1 );"          /var/www/html/wp-config.php
     sed -i "44i define( 'WP_REDIS_DATABASE', 0 );\n"            /var/www/html/wp-config.php
 fi
 

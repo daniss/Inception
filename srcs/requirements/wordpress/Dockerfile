@@ -14,4 +14,4 @@ COPY conf/www.conf /etc/php/7.3/fpm/pool.d/
 COPY tools/wordpress.sh /tmp/wordpress.sh
 RUN chmod +x /tmp/wordpress.sh
 
-ENTRYPOINT [ "/tmp/wordpress.sh" ]
+CMD [ "/tmp/wordpress.sh" ]

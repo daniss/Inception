@@ -8,4 +8,4 @@ COPY tools/mariadb.sh /tmp/mariadb.sh
 
 RUN chmod +x /tmp/mariadb.sh
 
-ENTRYPOINT ["/tmp/mariadb.sh"]
+CMD ["/tmp/mariadb.sh"]

@@ -3,6 +3,7 @@ version: '3'
 services:
   mariadb:
     container_name: mariadb
+    image: mariadb
     networks:
       - inception
     build:
@@ -13,11 +14,10 @@ services:
     volumes:
       - mariadb:/var/lib/mysql
     restart: on-failure
-    ports:
-      - "3306:3306"
 
   wordpress:
     container_name: wordpress
+    image: wordpress
     networks:
       - inception
     build:
@@ -30,11 +30,10 @@ services:
     depends_on:
       - mariadb
     restart: on-failure
-    ports:
-      - "9000:9000"
 
   nginx:
     container_name: nginx
+    image: nginx
     networks:
       - inception
     build:
@@ -52,11 +51,10 @@ services:
   
   redis:
     container_name: redis
+    image: redis
     build: ./requirements/bonus/redis
     depends_on:
       - wordpress
-    ports:
-     - '6379:6379'
     restart: always
     env_file:
       - .env
